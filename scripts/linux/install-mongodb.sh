@@ -5,16 +5,24 @@ set -e
 # older mup uses mongodb from apt-get and they used this data directory
 sudo mkdir -p /var/lib/mongodb
 
-sudo docker pull mongo:latest
 set +e
-sudo docker rm -f mongodb
+haveMongo=$(mongo --version | grep "version")
 set -e
 
-sudo docker run \
-  -d \
-  --restart=always \
-  --publish=127.0.0.1:27017:27017 \
-  --volume=/var/lib/mongodb:/data/db \
-  --volume=/opt/mongodb/mongodb.conf:/mongodb.conf \
-  --name=mongodb \
-  mongo mongod -f /mongodb.conf
+if [ ! "$haveDocker" ]; then
+	sudo docker pull index.alauda.cn/library/mongo:latest
+	sudo docker tag index.alauda.cn/library/mongo:latest mongo:latest
+
+	set +e
+	sudo docker rm -f mongodb
+	set -e
+
+	sudo docker run \
+	  -d \
+	  --restart=always \
+	  --publish=127.0.0.1:27017:27017 \
+	  --volume=/var/lib/mongodb:/data/db \
+	  --volume=/opt/mongodb/mongodb.conf:/mongodb.conf \
+	  --name=mongodb \
+	  mongo mongod -f /mongodb.conf
+fi
