@@ -1,6 +1,6 @@
 {
   "name": "mdup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Maodou.io Meteor Deployments",
   "dependencies": {
     "async": "^0.9.0",
@@ -15,7 +15,7 @@
     "minimist": "1.1.1"
   },
   "bin": {
-    "mupx": "./bin/mdup"
+    "mdup": "./bin/mdup"
   },
   "author": "zhaoic <zhaoic@163.com>",
   "repository": {
