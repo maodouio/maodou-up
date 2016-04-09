@@ -1,4 +1,4 @@
-PORT=<%= port %>
+PORT=<%= meteor_container_port %>
 APPNAME=<%= appName %>
 APP_PATH=/opt/$APPNAME
 START_SCRIPT=$APP_PATH/config/start.sh

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 
 var path = require('path');
 var cjson = require('cjson');
@@ -12,7 +12,7 @@ var settingsFileName = cliOptions.settings || 'settings.json';
 require('colors');
 require('../lib/update_notifier.js');
 
-console.log('\nMeteor Up: Production Quality Meteor Deployments'.bold.blue);
+console.log('\nMeteor Up: Maodou.io Meteor Deployments'.bold.blue);
 console.log('------------------------------------------------'.bold.blue);
 
 if (configFileName !== 'mup.json' || settingsFileName !== 'settings.json'){

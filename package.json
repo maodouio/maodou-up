@@ -1,7 +1,7 @@
 {
-  "name": "mupx",
-  "version": "1.5.2",
-  "description": "Production Quality Meteor Deployments",
+  "name": "mdup",
+  "version": "0.1.1",
+  "description": "Maodou.io Meteor Deployments",
   "dependencies": {
     "async": "^0.9.0",
     "cjson": "0.3.x",
@@ -15,12 +15,12 @@
     "minimist": "1.1.1"
   },
   "bin": {
-    "mupx": "./bin/mup"
+    "mdup": "./bin/mdup"
   },
-  "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
+  "author": "zhaoic <zhaoic@163.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/arunoda/meteor-up.git"
+    "url": "git://github.com/maodouio/maodou-up.git"
   },
   "license": "MIT"
 }

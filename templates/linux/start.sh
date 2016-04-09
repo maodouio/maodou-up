@@ -4,7 +4,8 @@ APPNAME=<%= appName %>
 APP_PATH=/opt/$APPNAME
 BUNDLE_PATH=$APP_PATH/current
 ENV_FILE=$APP_PATH/config/env.list
-PORT=<%= port %>
+PORT=<%= meteor_container_port %>
+APP_VIRTUAL_URL=<%= virtual_host %>
 USE_LOCAL_MONGO=<%= useLocalMongo? "1" : "0" %>
 
 # Remove previous version of the app, if exists
@@ -15,7 +16,7 @@ docker rm -f $APPNAME-frontend
 
 # We don't need to fail the deployment because of a docker hub downtime
 set +e
-docker pull meteorhacks/meteord:base
+#docker pull meteorhacks/meteord:base
 set -e
 
 if [ "$USE_LOCAL_MONGO" == "1" ]; then
@@ -29,7 +30,8 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
     --hostname="$HOSTNAME-$APPNAME" \
     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
-    meteorhacks/meteord:base
+    index.alauda.cn/zhaoic/meteord:1.3.1
+    
 else
   docker run \
     -d \
@@ -39,7 +41,7 @@ else
     --hostname="$HOSTNAME-$APPNAME" \
     --env-file=$ENV_FILE \
     --name=$APPNAME \
-    meteorhacks/meteord:base
+    index.alauda.cn/zhaoic/meteord:1.3.1
 fi
 
 <% if(typeof sslConfig === "object")  { %>
