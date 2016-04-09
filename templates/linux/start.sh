@@ -32,7 +32,6 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
     index.alauda.cn/zhaoic/meteord:1.3.1
-    
 else
   docker run \
     -d \
@@ -42,7 +41,6 @@ else
     --hostname="$HOSTNAME-$APPNAME" \
     --env-file=$ENV_FILE \
     --hostname="$HOSTNAME-$APPNAME" \
-    #--env=MONGO_URL=$MONGO_URL_COMPOSE \
     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
     index.alauda.cn/zhaoic/meteord:1.3.1

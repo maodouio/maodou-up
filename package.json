@@ -1,6 +1,6 @@
 {
   "name": "mdup",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Maodou.io Meteor Deployments",
   "dependencies": {
     "async": "^0.9.0",
