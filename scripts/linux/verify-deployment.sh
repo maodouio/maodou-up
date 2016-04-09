@@ -18,7 +18,7 @@ revert_app (){
   fi
   
   echo 
-  echo "To see more logs type 'mup logs --tail=50'"
+  echo "To see more logs type 'mdup logs --tail=50'"
   echo ""
 }
 
