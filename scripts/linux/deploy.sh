@@ -27,8 +27,8 @@ if [[ -d current ]]; then
 fi
 
 # setup the new version
-# sudo mkdir current
-# copy msaas bundle.tar.gz 
+sudo mkdir current
+# copy msaas bundle.tar.gz
 sudo cp ../msaas/current/bundle.tar.gz current/
 
 # We temporarly stopped the binary building
