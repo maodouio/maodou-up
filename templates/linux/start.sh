@@ -7,6 +7,7 @@ ENV_FILE=$APP_PATH/config/env.list
 PORT=<%= meteor_container_port %>
 APP_VIRTUAL_URL=<%= virtual_host %>
 USE_LOCAL_MONGO=<%= useLocalMongo? "1" : "0" %>
+#MONGO_URL_COMPOSE=<%= mongodb_URL %>
 
 # Remove previous version of the app, if exists
 docker rm -f $APPNAME
@@ -31,7 +32,6 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
     index.alauda.cn/zhaoic/meteord:1.3.1
-    
 else
   docker run \
     -d \
@@ -40,6 +40,8 @@ else
     --volume=$BUNDLE_PATH:/bundle \
     --hostname="$HOSTNAME-$APPNAME" \
     --env-file=$ENV_FILE \
+    --hostname="$HOSTNAME-$APPNAME" \
+    --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
     index.alauda.cn/zhaoic/meteord:1.3.1
 fi
