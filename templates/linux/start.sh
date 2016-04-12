@@ -23,6 +23,7 @@ set -e
 if [ "$USE_LOCAL_MONGO" == "1" ]; then
   docker run \
     -d \
+    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     --restart=always \
     --publish=$PORT:80 \
     --volume=$BUNDLE_PATH:/bundle \
@@ -35,6 +36,7 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
 else
   docker run \
     -d \
+    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     --restart=always \
     --publish=$PORT:80 \
     --volume=$BUNDLE_PATH:/bundle \
