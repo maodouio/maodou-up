@@ -16,11 +16,11 @@ docker rm -f $APPNAME
 docker rm -f $APPNAME-frontend
 
 # We don't need to fail the deployment because of a docker hub downtime
-set +e
-#docker pull meteorhacks/meteord:base
-set -e
+# set +e
+# #docker pull meteorhacks/meteord:base
+# set -e
 
-if [ "$USE_LOCAL_MONGO" == "1" ]; then
+# if [ "$USE_LOCAL_MONGO" == "1" ]; then
   docker run \
     -d \
     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
@@ -33,20 +33,20 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
     --name=$APPNAME \
     index.alauda.cn/zhaoic/meteord:base
-else
-  docker run \
-    -d \
-    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
-    --restart=always \
-    --publish=$PORT:80 \
-    --volume=$BUNDLE_PATH:/bundle \
-    --hostname="$HOSTNAME-$APPNAME" \
-    --env-file=$ENV_FILE \
-    --hostname="$HOSTNAME-$APPNAME" \
-    --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
-    --name=$APPNAME \
-    index.alauda.cn/zhaoic/meteord:base
-fi
+# else
+#   docker run \
+#     -d \
+#     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
+#     --restart=always \
+#     --publish=$PORT:80 \
+#     --volume=$BUNDLE_PATH:/bundle \
+#     --hostname="$HOSTNAME-$APPNAME" \
+#     --env-file=$ENV_FILE \
+#     --hostname="$HOSTNAME-$APPNAME" \
+#     --env=MONGO_URL=mongodb://mongodb:27017/$APPNAME \
+#     --name=$APPNAME \
+#     index.alauda.cn/zhaoic/meteord:base
+# fi
 
 <% if(typeof sslConfig === "object")  { %>
   # We don't need to fail the deployment because of a docker hub downtime
