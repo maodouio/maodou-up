@@ -17,13 +17,14 @@ docker rm -f $APPNAME
 docker rm -f $APPNAME-frontend
 
 # We don't need to fail the deployment because of a docker hub downtime
-set +e
-#docker pull meteorhacks/meteord:base
-set -e
+# set +e
+# #docker pull meteorhacks/meteord:base
+# set -e
 
-if [ "$USE_LOCAL_MONGO" == "1" ]; then
+ if [ "$USE_LOCAL_MONGO" == "1" ]; then
   docker run \
     -d \
+    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     --restart=always \
     --publish=$PORT:80 \
     --env-file=$ENV_FILE \
@@ -44,6 +45,7 @@ else
     --name=$APPNAME \
     $DOCKER_IMG
 fi
+
 
 <% if(typeof sslConfig === "object")  { %>
   # We don't need to fail the deployment because of a docker hub downtime

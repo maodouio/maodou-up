@@ -28,12 +28,13 @@ fi
 
 # setup the new version
 sudo mkdir current
-sudo cp tmp/bundle.tar.gz current/
+# copy msaas bundle.tar.gz
+sudo cp ../bundle.tar.gz current/
 
 # We temporarly stopped the binary building
 # Instead we are building for linux 64 from locally
 # That's just like what meteor do
-# We can have option to turn binary building later on, 
+# We can have option to turn binary building later on,
 # but not now
 
 # # rebuild binary module
