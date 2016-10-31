@@ -25,6 +25,9 @@ docker rm -f $APPNAME-frontend
   docker run \
     -d \
     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
+    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
+    -e LETSENCRYPT_HOST=$APP_VIRTUAL_URL \
+    -e LETSENCRYPT_EMAIL=dev@maodou.io \
     --restart=always \
     --publish=$PORT:80 \
     --env-file=$ENV_FILE \
@@ -37,6 +40,9 @@ else
   docker run \
     -d \
     --restart=always \
+    -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
+    -e LETSENCRYPT_HOST=$APP_VIRTUAL_URL \
+    -e LETSENCRYPT_EMAIL=dev@maodou.io \
     --publish=$PORT:80 \
     --hostname="$HOSTNAME-$APPNAME" \
     --env-file=$ENV_FILE \
