@@ -29,7 +29,7 @@ fi
 # setup the new version
 sudo mkdir current
 # copy msaas bundle.tar.gz
-sudo cp ../bundle.tar.gz current/
+# sudo cp ../bundle.tar.gz current/
 
 # We temporarly stopped the binary building
 # Instead we are building for linux 64 from locally
