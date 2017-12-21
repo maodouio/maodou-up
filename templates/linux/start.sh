@@ -9,6 +9,7 @@ APP_VIRTUAL_URL=<%= virtual_host %>
 USE_LOCAL_MONGO=<%= useLocalMongo? "1" : "0" %>
 MONGO_URL_COMPOSE=<%= mongodb_URL %>
 DOCKER_IMG=<%= docker_img %>
+DOCKER_PARAM=<%= docker_param %>
 
 # Remove previous version of the app, if exists
 docker rm -f $APPNAME
@@ -23,7 +24,7 @@ docker rm -f $APPNAME-frontend
 
  if [ "$USE_LOCAL_MONGO" == "1" ]; then
   docker run \
-    -d \
+    -d $DOCKER_PARAM\
     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     -e LETSENCRYPT_HOST=$APP_VIRTUAL_URL \
@@ -38,7 +39,7 @@ docker rm -f $APPNAME-frontend
     $DOCKER_IMG
 else
   docker run \
-    -d \
+    -d $DOCKER_PARAM\
     --restart=always \
     -e VIRTUAL_HOST=$APP_VIRTUAL_URL \
     -e LETSENCRYPT_HOST=$APP_VIRTUAL_URL \
